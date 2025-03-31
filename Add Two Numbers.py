@@ -65,6 +65,8 @@ class Solution:
 
 
 # Here is the best solution, seems the major difference is the amount of if else used is reduced
+# And my solution is unnecessarily checking startingRef each time which can be avoided!
+
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:       
         cur = root=  ListNode()
