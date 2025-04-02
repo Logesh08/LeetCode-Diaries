@@ -32,6 +32,7 @@ class Solution:
     
 
 # This is my optimal solution with O(log(min(m,n))) time complexity
+# Funfact: Target was to acheive just O(log(m+n)) but I ended up with O(log(min(m,n)))
 # It took me two days to find how to properly implement the binary search
 # Runtime: Beats 100% of submissions    | O(log(min(m,n)))
 # Memorry: Beats 84.07% of submissions  | O(1)
