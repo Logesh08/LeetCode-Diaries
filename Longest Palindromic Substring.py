@@ -34,7 +34,7 @@ class Solution:
 
 # Well, if we start from the biggest substring there is no need to check the smaller ones
 # So we can just return the first one we find
-# But still its not the best
+# But it is also O(n^3) time complexity
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
@@ -45,3 +45,101 @@ class Solution:
                 subs = s[j:j+windowSize]
                 if subs == subs[::-1]:
                     return subs
+                
+
+
+# Wow, I was finally able to understand a technique called "Expand Around Center"
+# The idea is to expand around the center of the palindrome
+# I thought is was not useful and expladnig around the center made no sense.. until I realised something..
+# Everytime I have solved a problem with a palindrome, I use sliding window
+# For eg, for str -> abcba, I generate all the substrings and check if they are palindromes
+# so abcba -> a, b, c, b, a, ab, bc, cb, ba, abc, bcb, cba, abcb, abcba
+
+# But when using the expand arround center tehcnique, I only considering substrings that are palindromes
+# so abcba -> a, bcb and abcba ... only these 3 are palindromes are actually processed and we can cut down all the other substrings
+# So the time complexity is O(n^2)
+# Old one was O(n^3) because I was checking all the substrings and then checking if they are palindromes
+
+
+# Runtime: 213ms | Beats 95.57%
+
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        total = len(s)
+        maxLen = 0
+        palStr = ''
+
+        for i in range(total):
+
+            # start with odd center
+            oddPal = 1
+            left = i-1
+            right = i+1
+            while left >= 0 and right < total:
+                # sides available perform odd check
+                if s[left] == s[right]:
+                    oddPal += 2
+                    left -= 1
+                    right += 1
+                else:
+                    break
+            
+            if oddPal > maxLen:
+                maxLen = oddPal
+                palStr = s[left+1:right]
+
+
+            # now even center
+            evPal = 1
+            left = i-1
+            right = i+1
+            if right < total and s[i] == s[right]:
+                # found an even pair
+                right += 1
+                evPal = 2
+                while left >= 0 and right < total:
+                    if s[left] == s[right]:
+                        evPal += 2
+                        left -= 1
+                        right += 1
+                    else:
+                        break
+                    
+            if evPal > maxLen:
+                maxLen = evPal
+                palStr = s[left+1:right]
+
+        return palStr
+    
+
+
+# After reviewing with Ai, it suggested that I can remove oddPal and evPal variables
+# It also suggested that I use a a single function, which I already thought about
+# So here is the better one
+
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:            
+        total = len(s)
+        maxLen = 0
+        palStr = ''
+
+        def expandArroundCenter(left: int,right: int):
+            nonlocal maxLen, palStr, total
+            while left >= 0 and right < total and s[left] == s[right]:
+                left -= 1
+                right += 1
+            
+            palLen = right - left - 1
+            if palLen > maxLen:
+                maxLen = palLen
+                palStr = s[left+1:right]
+
+        
+        for i in range(total):
+
+            expandArroundCenter(i, i)
+            expandArroundCenter(i, i+1)
+
+        return palStr
