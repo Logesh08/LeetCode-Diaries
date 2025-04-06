@@ -142,4 +142,41 @@ class Solution:
             expandArroundCenter(i, i)
             expandArroundCenter(i, i+1)
 
-        return palStr
+        return 
+    
+
+# I came accross an algorithm called Manacher's algorithm
+# It's said it just takes O(n) time complexity
+# But I can't understand it for the last 3 days
+# Finally I guess I understand 
+
+
+# I guess it took me 3 days to understand Manacher's algorithm, because I was busy with other things
+# This is my 21st submission
+# Runtime: 52ms | Beats 97.22%
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        t = '#'+'#'.join(s)+'#'
+        p = [0] * len(t)
+        c = r = 0
+
+        for i in range(1,len(t)-1):
+            
+            mirror = c*2 - i
+
+            if i < r:
+                p[i] = min(p[mirror],r-i)
+
+            while i-p[i]-1>=0 and i+p[i]+1<len(t) and t[i-p[i]-1]==t[i+p[i]+1]:
+                p[i] += 1
+
+            if i+p[i] > r:
+                c = i
+                r = i + p[i]
+
+        radius = max(p)
+        center = p.index(radius)
+        start = (center - radius) // 2
+        end = start + radius
+        return s[start:end]
