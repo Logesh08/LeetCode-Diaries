@@ -43,6 +43,9 @@
 # This is my first solution, I tired hard to solve in O(n)
 # Idk if its a good way or not...
 
+# It beats only 42.55% of submissions..
+# It feels like I have missed something
+
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         n=len(s)
@@ -58,3 +61,24 @@ class Solution:
 
         return ans
 
+
+
+# Yo yoo crazyyy stuff happend, I just switched to list and BOOM!
+# It beats 93.63% of the submissions..
+# Guess my first solution was not that bad after all
+# TimeComplexity: O(n)
+
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        n=len(s)
+        if numRows==1: return s
+        ans=[]
+        base = (numRows-1) * 2
+        for i in range(numRows):
+            for cur in range(i,n,base):
+                ans.append(s[cur])
+                right = cur + base - i*2
+                if i>0 and i<numRows-1 and right < n:
+                    ans.append(s[right])
+
+        return ''.join(ans)
