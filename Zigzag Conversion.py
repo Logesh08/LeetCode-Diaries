@@ -82,3 +82,28 @@ class Solution:
                     ans.append(s[right])
 
         return ''.join(ans)
+
+
+# Here is an easy method with I used by using Row Buckets
+# I just used a lists to store the characters in the zigzag pattern
+# Made this in 20 mins
+
+# Beats 45.68% of submissions
+
+
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if numRows==1: return s
+        length = len(s)
+        ans = [''] * numRows
+        ptr = 0
+        updater = 0
+        for i in range(length):
+            ans[ptr] += s[i]
+            if ptr == 0:
+                updater = 1
+            if ptr == numRows-1:
+                updater = -1
+            ptr += updater
+
+        return ''.join(ans)
