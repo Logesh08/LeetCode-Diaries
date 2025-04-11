@@ -46,3 +46,44 @@ class Solution:
                 si += 1
         
         return si
+    
+
+# We can do it without list
+class Solution:
+    def countSymmetricIntegers(self, low: int, high: int) -> int:
+        si = 0
+        for i in range(low,high+1):
+            s = str(i)
+            l = len(s)
+            if len(s)%2: continue
+            if sum(map(int,str(i)[:l//2])) == sum(map(int,str(i)[l//2:])):
+                si += 1
+        
+        return si
+    
+
+
+
+
+# This is enumaration approach were we explicitly use the number between (10 and 199) then (1000 and 9999)
+# The solution is correct and works for the given constraints.
+# O(high - low) time complexity
+
+# Runtime: 102ms | Beats 97.56% of submissions
+
+
+class Solution(object):
+    def countSymmetricIntegers(self, low, high):
+        ans = 0
+        for i in range(low, high + 1):
+            if i < 100 and i % 11 == 0:
+                ans += 1 
+            elif 1000 <= i < 10000:
+                left = i // 1000 + (i//100 % 10) 
+                right = (i//10 % 10)  + i % 10
+                if left == right:
+                    ans += 1
+        return ans
+
+
+
