@@ -77,7 +77,7 @@ class Solution:
 # Made a pure math solution, literally took a whole day, not sure even if I understood 100%
 # Becuase I struggeled a lot with the edge cases need to practice it more and agian
 
-
+# Running time: 0ms | Beats 100% of the submissions
 
 class Solution:
     def numberOfPowerfulInt(self, start: int, finish: int, limit: int, s: str) -> int:
