@@ -43,4 +43,29 @@
 # Follow up: Could you solve it iteratively?
 
 
+# My classic approach idk the name...
+# Beats 98% of the submissions
 
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        if n == 1: return "1"
+        base = [1]
+        for _ in range(n-1):
+            temp = []
+            cur = -1
+            count = 0
+            for c in base:
+                if cur == c:
+                    count += 1
+                else:
+                    if cur != -1:
+                        temp.append(count)
+                        temp.append(cur)
+                    cur = c
+                    count = 1
+
+            temp.append(count)
+            temp.append(cur)
+            base = temp
+        return ''.join(map(str, base))
