@@ -49,7 +49,6 @@
 
 class Solution:
     def countAndSay(self, n: int) -> str:
-        if n == 1: return "1"
         base = [1]
         for _ in range(n-1):
             temp = []
@@ -69,3 +68,55 @@ class Solution:
             temp.append(cur)
             base = temp
         return ''.join(map(str, base))
+    
+
+
+# Let's try it in recursion
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+
+        def rle(n,base):
+            if n == 0: return ''.join(map(str, base))
+            temp = []
+            cur = -1
+            count = 0
+            for c in base:
+                if cur == c:
+                    count += 1
+                else:
+                    if cur != -1:
+                        temp.append(count)
+                        temp.append(cur)
+                    cur = c
+                    count = 1
+
+            temp.append(count)
+            temp.append(cur)
+            return rle(n-1,temp)
+
+
+        return "1" if n == 1 else rle(n-1,[1])
+    
+
+
+
+# Optimized version
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        if n == 1:
+            return "1"
+        prev = self.countAndSay(n - 1)
+        return self._rle(prev)
+
+    def _rle(self, s: str) -> str:
+        res, count = [], 1
+        for i in range(1, len(s)):
+            if s[i] == s[i - 1]:
+                count += 1
+            else:
+                res.append(f"{count}{s[i - 1]}")
+                count = 1
+        res.append(f"{count}{s[-1]}")
+        return "".join(res)
