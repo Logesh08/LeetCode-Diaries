@@ -75,6 +75,8 @@ class Solution:
 # Which is just referred as f(0,b) - f(0,a-1) 
 # Ah it's always math
 
+# Beats 98% of the submissions
+
 class Solution:
     def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
         nums.sort()
@@ -95,3 +97,38 @@ class Solution:
 
         return ans
     
+
+
+# Now lets try using binary search which is also a way to solve
+# Without using bisect
+
+# It's worse, just solves the problem in the margin
+# Not recommended for this particular problem!
+
+class Solution:
+    def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
+        nums.sort()
+        ans = 0
+        n = len(nums)
+        for i in range(n):
+            left = i + 1
+            right = n - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if nums[i] + nums[mid] > upper:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            ans += left - i - 1
+
+            left = i + 1
+            right = n - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if nums[i] + nums[mid] >= lower:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            ans -= left - i - 1
+
+        return ans
