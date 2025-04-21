@@ -54,3 +54,49 @@
 
 
 
+
+
+
+# My elegant solution using prefix sum
+# This question is just a puzzle of finding the range
+# So correct upper with maxVal and lower with minVal
+
+# The range is formulated based on:
+# lower ≤ x + minVal        → x ≥ lower - minVal
+# upper ≥ x + maxVal        → x ≤ upper - maxVal
+# x ∈ [lower - minVal, upper - maxVal]
+# (upper - maxVal) - (lower - minVal) + 1
+
+# The solution is O(n) time complexity and O(1) space complexity
+
+class Solution:
+    def numberOfArrays(self, differences: List[int], lower: int, upper: int) -> int:
+        
+        prefix = minVal = maxVal = lower
+
+        for val in differences:
+            prefix += val
+            minVal = min(minVal,prefix)
+            maxVal = max(maxVal,prefix)
+
+
+        return max(0, upper - maxVal - lower + minVal + 1)
+    
+
+
+
+
+# Lets use accumalate to generate the prefix sum
+
+# This is much faster than my approch
+
+# Beats 98% of the submissions
+
+from itertools import accumulate
+
+class Solution:
+    def numberOfArrays(self, differences: List[int], lower: int, upper: int) -> int:
+        prefixes = list(accumulate(differences, initial = lower))
+
+        return max(0, upper - lower - max(prefixes) + min(prefixes) + 1)
+    
