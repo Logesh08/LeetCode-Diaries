@@ -50,3 +50,20 @@
 
 
 
+function numberOfArrays(differences: number[], lower: number, upper: number): number {
+    const n = differences.length;
+    let minSum = 0;
+    let maxSum = 0;
+    let currentSum = 0;
+
+    for (let i = 0; i < n; i++) {
+        currentSum += differences[i];
+        minSum = Math.min(minSum, currentSum);
+        maxSum = Math.max(maxSum, currentSum);
+    }
+
+    const minValue = lower - minSum;
+    const maxValue = upper - maxSum;
+
+    return Math.max(0, maxValue - minValue + 1);
+};
