@@ -52,7 +52,7 @@ class Solution:
 
 
 # I just modfied using just int to caclulate sum it imporoved the performance drastically
-# Beats 80% of the submissions
+# Beats 75% of the submissions
 
 
 class Solution:
@@ -71,6 +71,35 @@ class Solution:
                 largestGroup = hashMap[cur_sum]
                 ans = 1
             elif hashMap[cur_sum] == largestGroup:
+                ans += 1
+
+        return ans
+    
+
+# Now we can move the if statements outside the loop and
+# check if the efficenecy changes
+
+# Wow this beats 81.75% of the submissions
+# So sometimes its better to avoid if else in each loop!
+
+class Solution:
+    def countLargestGroup(self, n: int) -> int:
+        hashMap = {}
+        for i in range(1,n+1):
+            cur_sum = 0
+            temp = i
+            while temp > 0:
+                cur_sum += temp %10
+                temp //= 10
+            hashMap[cur_sum] = hashMap.get(cur_sum,0) + 1
+
+        largestGroup = 0
+        ans = 0
+        for key in hashMap:
+            if hashMap[key] > largestGroup:
+                largestGroup = hashMap[key]
+                ans = 1
+            elif hashMap[key] == largestGroup:
                 ans += 1
 
         return ans
