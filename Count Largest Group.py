@@ -52,6 +52,7 @@ class Solution:
 
 
 # I just modfied using just int to caclulate sum it imporoved the performance drastically
+# Beats 80% of the submissions
 
 
 class Solution:
