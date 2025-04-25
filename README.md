@@ -5,4 +5,4 @@
 ---
 
 ## About
-This repository is a personal collection of my LeetCode problem solutions, implemented in multiple languages with my comments.
+This repository is a personal collection of my LeetCode problem solutions, implemented in multiple languages with a lot of comments.
