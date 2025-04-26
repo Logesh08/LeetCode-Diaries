@@ -29,6 +29,10 @@
 
 
 
+
+# This is a solution I though of by using only valid subsets
+# for each subset, I have to find and increment the count
+
 class Solution:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
         n = len(nums)
@@ -61,7 +65,7 @@ class Solution:
     
 
 
-
+# Actually we can implement the above logic in a simpler way
 
 
 class Solution:
@@ -77,3 +81,19 @@ class Solution:
                 currMax = i
             res += max(0, min(currMin, currMax) - badIndex)
         return res
+    
+
+
+# This version improves performance drastically!    
+
+class Solution:
+    def countSubarrays(self, nums: List[int], min_k: int, max_k: int) -> int:
+        ans = 0
+        min_i = max_i = i0 = -1
+        for i, x in enumerate(nums):
+            if x == min_k: min_i = i
+            if x == max_k: max_i = i
+            if not min_k <= x <= max_k: i0 = i
+            j = min_i if min_i < max_i else max_i
+            if j > i0: ans += j - i0
+        return ans
