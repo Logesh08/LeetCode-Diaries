@@ -26,6 +26,8 @@
 
 
 
+# My solution
+# Beats 100%
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
@@ -36,3 +38,24 @@ class Solution:
                 return i
 
         return -1 if haystack != needle else 0
+    
+
+
+
+
+# Found this solution in the discussions,
+# looks so elegant and beautiful
+
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        start = 0
+        end = len(needle)
+
+        while end <= len(haystack):
+            if haystack[start:end] == needle:
+                return start
+            start += 1
+            end += 1
+
+        return -1
