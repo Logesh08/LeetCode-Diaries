@@ -72,3 +72,25 @@ class Solution:
                 left += 1
                 nums[left] = nums[right]
         return left + 1
+    
+
+
+
+
+
+
+
+
+
+# I was exploring other's solution and found out this
+# These guys were actually doing a wierd check
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        nums = sorted(set(nums))   # This fails
+        return len(nums)
+    
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        nums[:] = sorted(set(nums))  # But this passes
+        return len(nums)
