@@ -44,3 +44,21 @@ class Solution:
                 return len(word)
             
 
+
+# A proper approach which can be used in any language
+# Beats 100%
+
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        end = len(s)-1
+
+        while s[end] == ' ':
+            end -= 1
+
+        start = end
+
+        while start > 0 and s[start] != ' ':
+            start -= 1
+
+        return end - start
