@@ -58,7 +58,7 @@ class Solution:
 
         start = end
 
-        while start > 0 and s[start] != ' ':
+        while start >= 0 and s[start] != ' ':
             start -= 1
 
         return end - start
