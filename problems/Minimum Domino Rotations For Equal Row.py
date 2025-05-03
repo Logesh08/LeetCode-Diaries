@@ -127,3 +127,17 @@ class Solution:
                 bottomCount += 1
 
         return n - max(topCount,bottomCount)
+    
+
+
+
+
+# This solution form the submissoins, beats 100% of the solutions
+# Looks cool and simple
+
+class Solution:
+    def minDominoRotations(self, A, B):
+        for x in [A[0],B[0]]:
+            if all(x in d for d in zip(A, B)):
+                return len(A) - max(A.count(x), B.count(x))
+        return -1
