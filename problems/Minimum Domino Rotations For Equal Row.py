@@ -141,3 +141,11 @@ class Solution:
             if all(x in d for d in zip(A, B)):
                 return len(A) - max(A.count(x), B.count(x))
         return -1
+    
+
+# Idea behind the above:
+
+# To make all values in top or bottom the same using minimum rotations, you only ever need to try two candidates:
+# A[0] (top of first domino)
+# B[0] (bottom of first domino)
+# If it's possible to make all values in a row equal to either of them — then you just need to check how many rotations are needed.
