@@ -87,3 +87,43 @@ class Solution:
 
         return n - max(topCount,bottomCount)
     
+
+
+
+
+
+
+# The same solution with list as a hashMap
+
+
+class Solution:
+    def minDominoRotations(self, tops: List[int], bottoms: List[int]) -> int:
+        n = len(tops)
+        hashMap = [0] * 7
+        choosenDomino = -1
+        mmax = -1
+
+        for i in range(n):
+            if tops[i] != bottoms[i]:
+                hashMap[tops[i]] += 1
+                hashMap[bottoms[i]] += 1
+            else:
+                hashMap[tops[i]] += 1
+        print(hashMap)
+        for i in range(1,7):
+            if hashMap[i] >= n:
+                mmax = max(hashMap[i],mmax)
+                choosenDomino = i
+
+        if choosenDomino == -1:
+            return choosenDomino
+
+        topCount = bottomCount = 0
+        
+        for i in range(n):
+            if tops[i] == choosenDomino:
+                topCount += 1
+            if bottoms[i] == choosenDomino:
+                bottomCount += 1
+
+        return n - max(topCount,bottomCount)
