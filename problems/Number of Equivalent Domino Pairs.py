@@ -70,3 +70,24 @@ class Solution:
 
 
         return ans
+    
+
+
+
+# Just noticing that the numbers can be from 0 to 9
+# So I can use a list of size 100 to store the pairs
+
+# This approach beats 100% of the submissions
+
+class Solution:
+    def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
+
+        pairs = [0] * 100
+        ans = 0
+
+        for x,y in dominoes:
+            val = x*10 + y if x<y else y*10 + x
+            ans += pairs[val]
+            pairs[val] += 1
+
+        return ans
