@@ -181,3 +181,19 @@ class Solution:
             right += 1
 
         return "".join(dominoes)
+
+
+
+
+
+
+# Holy god, found this crazy solution in the top submissons
+# This is 400 IQ move demn.
+
+class Solution:
+  def pushDominoes(self, dominoes: str) -> str:
+    s = f'L{dominoes}R'
+    s = re.sub(r'(R|L)(\.+)(?=\1)', lambda m:m[1]*(len(m[2])+1), s)
+    s = re.sub(r'(?<=R)(\.+)(?=L)', lambda m:(q:=len(m[1]))//2*'R'+q%2*'.'+q//2*'L', s)
+    
+    return s[1:-1]
