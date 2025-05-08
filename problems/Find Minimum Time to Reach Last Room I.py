@@ -116,6 +116,7 @@ class Solution:
 
         shortestTime[0][0] = 0
         heap = [(0,0,0)]
+        directions = [(0,1),(0,-1),(1,0),(-1,0)]
 
         while heap:
             time, x, y = heapq.heappop(heap)
@@ -127,7 +128,6 @@ class Solution:
                 return time
 
 
-            directions = [(0,1),(0,-1),(1,0),(-1,0)]
 
             for dx,dy in directions:
                 nx = x + dx
