@@ -97,3 +97,48 @@ class Solution:
 
         
         return shortestTime[n-1][m-1]
+    
+
+
+
+
+
+
+
+# Much optimized version without using visited and early exit
+
+
+class Solution:
+    def minTimeToReach(self, moveTime: List[List[int]]) -> int:
+
+        n,m = len(moveTime) , len(moveTime[0])
+        shortestTime = [[math.inf]*m for _ in range(n)]
+
+        shortestTime[0][0] = 0
+        heap = [(0,0,0)]
+
+        while heap:
+            time, x, y = heapq.heappop(heap)
+
+            if time > shortestTime[x][y]:
+                continue
+
+            if x == n-1 and y == m-1:
+                return time
+
+
+            directions = [(0,1),(0,-1),(1,0),(-1,0)]
+
+            for dx,dy in directions:
+                nx = x + dx
+                ny = y + dy
+
+                if 0 <= nx < n and 0 <= ny < m:
+                    newTime = max(moveTime[nx][ny],shortestTime[x][y]) + 1
+
+                    if shortestTime[nx][ny] > newTime:
+                        shortestTime[nx][ny] = newTime
+                        heapq.heappush(heap,(newTime,nx,ny))
+
+        
+        return -1
