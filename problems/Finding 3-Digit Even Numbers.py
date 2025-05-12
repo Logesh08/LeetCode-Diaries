@@ -47,7 +47,7 @@ class Solution:
         freq = Counter(digits)
         ans = []
 
-        for i in range(100,998,2):
+        for i in range(100,999,2):
             d1, d2, d3 = i // 100, ( i // 10) % 10, i % 10
             cur_freq = Counter([d1,d2,d3])
             if all(freq[digit] >= cur_freq[digit] for digit in cur_freq):
