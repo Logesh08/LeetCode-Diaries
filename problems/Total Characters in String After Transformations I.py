@@ -69,7 +69,7 @@ class Solution:
         chars = [0] * 26
 
         for ch in s:
-            chars[ ord(ch) - ord('a')] += 1
+            chars[ord(ch) - ord('a')] += 1
 
 
         for _ in range(t):
