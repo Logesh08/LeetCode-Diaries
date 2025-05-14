@@ -85,3 +85,23 @@ class Solution:
             
 
 
+
+
+# Beats 90% in time complexity
+
+from collections import deque
+
+class Solution:
+    def lengthAfterTransformations(self, s: str, t: int) -> int:
+        MOD = 10**9 + 7
+        data = deque([0] * 26)
+
+        for ch in s:
+            data[ord(ch) - 97] += 1
+
+        for _ in range(t):
+            z = data.pop()
+            data[0] += z
+            data.appendleft(z)
+
+        return sum(data) % MOD
