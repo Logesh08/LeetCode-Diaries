@@ -124,3 +124,22 @@ class Solution:
         for k, v in cnt.items():
             ans = (ans + v * dp[(ord(k) - 97) + t]) % 1_000_000_007
         return ans
+    
+
+
+# A notable approach because the use of @cache is detected
+
+class Solution:
+    def lengthAfterTransformations(self, s: str, t: int) -> int:
+        ans = 0
+        for c in s:
+            i = ord(c) - ord('a')
+            ans += val(t+i)
+        return ans % (10**9 + 7)
+
+@cache
+def val(c):
+    if c >= 26:
+        return val(c-26) + val(c+1-26)
+    return 1
+        
