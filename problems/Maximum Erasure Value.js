@@ -30,25 +30,6 @@
 
 
 
-// class Solution:
-//     def maximumUniqueSubarray(self, nums: List[int]) -> int:
-//         left = 0
-//         seen = set()
-//         curSum = 0
-//         maxSum = 0
-
-//         for val in nums:
-//             while val in seen:
-//                 seen.remove(nums[left])
-//                 curSum -= nums[left]
-//                 left += 1
-
-//             seen.add(val)
-//             curSum += val
-//             maxSum = max(maxSum, curSum)
-
-//         return maxSum
-
 
 
 /**
