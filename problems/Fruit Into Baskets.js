@@ -63,3 +63,7 @@ var totalFruit = function(fruits) {
     }
     return maxLen;
 };
+
+
+// First I tried it in javascript, to be honest, I haven't used data structures like
+// Map() and Set() that much while working in my office for years lol.
