@@ -67,3 +67,5 @@ var totalFruit = function(fruits) {
 
 // First I tried it in javascript, to be honest, I haven't used data structures like
 // Map() and Set() that much while working in my office for years lol.
+
+// Seems like there is always room for learning!!!
