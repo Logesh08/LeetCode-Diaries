@@ -65,3 +65,22 @@ class Solution:
             if not placed:
                 unplaced += 1
         return unplaced
+    
+
+
+# Basket removal method by poping at index
+
+
+class Solution:
+    def numOfUnplacedFruits(self, fruits: List[int], baskets: List[int]) -> int:
+        unplaced = 0
+        for fruit in fruits:
+            placed = False
+            for left in range(len(baskets)):
+                if baskets[left] >= fruit:
+                    baskets.pop(left)
+                    placed = True
+                    break
+            if not placed:
+                unplaced += 1
+        return unplaced
