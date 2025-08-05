@@ -69,3 +69,7 @@ class Solution:
         if root.right:
             ans.extend(self.inorderTraversal(root.right))
         return ans
+    
+
+# Feels like first I had to traverse all the left, then current element and finally right side
+# I didn't know whats inorder traversal and just realised it midway of bruteforcing lol
