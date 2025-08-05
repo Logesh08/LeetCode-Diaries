@@ -92,4 +92,6 @@ class Solution:
 # second method beats 98% of the submissions all just because of a simple change
 
 
-# 
+# Reminds me of a Tamil saying - "Siru thli, peru vellam"
+# Because logically we end up with more unused basekets and still iterate over them
+# Poping those baskets makes things much faster
