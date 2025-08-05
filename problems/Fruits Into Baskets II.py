@@ -84,3 +84,12 @@ class Solution:
             if not placed:
                 unplaced += 1
         return unplaced
+    
+
+
+
+# It's so crazy to think, the first method beats 20% of the submissions where the 
+# second method beats 98% of the submissions all just because of a simple change
+
+
+# 
