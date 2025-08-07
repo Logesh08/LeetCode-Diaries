@@ -116,4 +116,4 @@ class Solution:
         maxFruits += dp[n-2][n-1]
         
 
-        print(maxFruits)
+        return maxFruits
