@@ -117,3 +117,41 @@ class Solution:
         
 
         return maxFruits
+    
+
+
+
+# Same program using 1D dp array
+
+class Solution:
+    def maxCollectedFruits(self, fruits: List[List[int]]) -> int:
+        n = len(fruits[0])
+        maxFruits = 0
+
+        # For child at 0,0
+        for i in range(n):
+            maxFruits += fruits[i][i]
+            fruits[i][i] = 0
+
+        dp = [float("-inf")] * (n + 1)  # Using 1D dp array
+
+        dp[n - 1] = fruits[n - 1][0]
+
+        # For child at n-1,0
+        for j in range(1, n - 1):
+            i_start = max(n - 1 - j, j + 1)
+            for i in range(i_start, n):
+                dp[i] = fruits[i][j] + max(dp[i - 1], dp[i], dp[i + 1])
+
+        maxFruits += dp[n - 2]
+
+        # For child at 0,n-1
+        dp[0] = fruits[0][n - 1]
+        for i in range(1, n - 1):
+            j_start = max(n - 1 - i, i + 1)
+            for j in range(j_start, n):
+                dp[i] = fruits[i][j] + max(dp[i - 1], dp[i], dp[i + 1])
+
+        maxFruits += dp[n - 2]
+
+        return maxFruits
