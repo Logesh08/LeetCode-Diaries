@@ -122,6 +122,9 @@ class Solution:
 
 
 # Same program using 1D dp array
+# But we need to use 2 buffers because in each iteration we need to use the previous row's values
+
+
 
 class Solution:
     def maxCollectedFruits(self, fruits: List[List[int]]) -> int:
@@ -133,25 +136,29 @@ class Solution:
             maxFruits += fruits[i][i]
             fruits[i][i] = 0
 
-        dp = [float("-inf")] * (n + 1)  # Using 1D dp array
-
-        dp[n - 1] = fruits[n - 1][0]
+        dp = [float("-inf")]*(n+1)
 
         # For child at n-1,0
-        for j in range(1, n - 1):
-            i_start = max(n - 1 - j, j + 1)
+        dp[n-1] = fruits[n-1][0]
+        for j in range(1, n-1):
+            i_start = max(n-1-j, j+1)
+            dp2 = dp[:]
             for i in range(i_start, n):
-                dp[i] = fruits[i][j] + max(dp[i - 1], dp[i], dp[i + 1])
+                dp[i] = fruits[i][j] + max(dp2[i-1],dp2[i],dp2[i+1])
 
-        maxFruits += dp[n - 2]
+        maxFruits += dp[n-1]
+
+        dp = [float("-inf")]*(n+1)
 
         # For child at 0,n-1
-        dp[0] = fruits[0][n - 1]
-        for i in range(1, n - 1):
-            j_start = max(n - 1 - i, i + 1)
+        dp[n-1] = fruits[0][n-1]
+        for i in range(1, n-1):
+            j_start = max(n-1-i, i+1)
+            dp2 = dp[:]
             for j in range(j_start, n):
-                dp[i] = fruits[i][j] + max(dp[i - 1], dp[i], dp[i + 1])
+                dp[j] = fruits[i][j] + max(dp2[j-1],dp2[j],dp2[j+1])
 
-        maxFruits += dp[n - 2]
+        maxFruits += dp[n-1]
+        
 
         return maxFruits
