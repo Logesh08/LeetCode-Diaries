@@ -56,3 +56,20 @@ class Solution:
 class Solution:
 	def isPowerOfTwo(self, n: int) -> bool:
 		return n > 0 and (1073741824 % n == 0)
+     
+
+# Bitwise trick
+# For positive integers:
+# A power of two has exactly one 1 in its binary form.
+# Example:
+# 1 = 0001
+# 2 = 0010
+# 4 = 0100
+# 8 = 1000
+
+# If n is a power of two, then:
+
+
+class Solution:
+	def isPowerOfTwo(self, n: int) -> bool:
+		return n > 0 and (n & (n-1)) == 0
