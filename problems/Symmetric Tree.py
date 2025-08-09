@@ -36,16 +36,44 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# Solution:
+
+# Using recursion
+
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         def isMirror(a,b):
             if a == None and b == None:
                 return True
-            if a == None or b == None:
+            if a == None or b == None or a.val != b.val:
                 return False
-            return a.val == b.val and isMirror(a.left,b.right) and isMirror(a.right,b.left)
+            return isMirror(a.left,b.right) and isMirror(a.right,b.left)
         
         if not root:
             return False
 
         return isMirror(root.left,root.right)
+    
+# Using for loop
+
+from collections import deque
+
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+        
+        queue = deque([(root.left,root.right)])
+
+        while queue:
+            a,b = queue.popleft()
+            if a == None and b == None:
+                continue
+            if a == None or b == None or a.val != b.val:
+                return False
+            
+            queue.append((a.left,b.right))
+            queue.append((a.right,b.left))
+
+        return True
