@@ -1,4 +1,4 @@
-### Using Dfs, not so effecient
+### Using Dfs style recursion
 
 # Definition for a binary tree node.
 # class TreeNode:
