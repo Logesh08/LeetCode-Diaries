@@ -50,3 +50,9 @@ class Solution:
     
 
 
+# THis method works because any valid number should be able to divide
+# the maximum number of the 32 bit int
+	
+class Solution:
+	def isPowerOfTwo(self, n: int) -> bool:
+		return n > 0 and (1073741824 % n == 0)
