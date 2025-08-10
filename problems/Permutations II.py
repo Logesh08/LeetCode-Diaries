@@ -16,7 +16,7 @@ class Solution:
                 # Skip using the used ones
                 if used[i]:
                     continue
-                # Skip duplicate recursion at depth
+                # Skip duplicate recursion at any depth
                 if i > 0 and nums[i] == nums[i-1] and not used[i-1]: 
                     continue
 
