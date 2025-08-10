@@ -48,6 +48,7 @@ class Solution:
                 if used[i]:
                     continue
                 # Skip duplicate recursion at any depth
+                # Skip the later duplicate at this depth unless the previous twin is used
                 if i > 0 and nums[i] == nums[i-1] and not used[i-1]: 
                     continue
 
