@@ -31,7 +31,7 @@ class Solution:
         for p in pows:
             for s in range(n,p-1,-1):
                 dp[s] = (dp[s] + dp[s-p])
-                print(dp)
+                print(dp,s,s-p)
 
         return dp[n] % MODULO
     
