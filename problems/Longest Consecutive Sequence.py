@@ -7,9 +7,8 @@ class Solution:
         for val in nums:
             if val-1 not in nums:
                 cur = 1
-                while val+1 in nums:
+                while val+cur in nums:
                     cur += 1
-                    val += 1
                 longest = max(longest, cur)
 
         return longest
