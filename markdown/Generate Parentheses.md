@@ -29,7 +29,6 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         res = []
 
-
         def dfs(openCount, closeCount, sol: List):
             if openCount == n and closeCount == n:
                 res.append("".join(sol))
