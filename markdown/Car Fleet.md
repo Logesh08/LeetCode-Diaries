@@ -55,3 +55,37 @@ Explanation:
 - <code>0 <= position[i] < target</code>
 - All the values of <code>position</code> are **unique** .
 - <code>0 < speed[i] <= 10^6</code>
+
+---
+
+## Solution
+
+Stack based approach:
+```python
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        stack = []
+        for i in range(len(position)):
+            time = (target-position[i]) / speed[i]
+            stack.append([position[i],time])
+
+        stack.sort(key= lambda x: x[0])
+
+        ans = 1
+        cur = stack.pop()
+
+        while stack:
+            top = stack.pop()
+            if top[1] > cur[1]:
+                ans += 1
+                cur = top
+            else:
+                continue
+
+        return ans
+```
+
+No Stack approach:
+```python
+
+```
