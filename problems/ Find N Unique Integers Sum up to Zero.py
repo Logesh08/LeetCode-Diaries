@@ -7,5 +7,7 @@ class Solution:
         for i in range(1,n//2 + 1):
             ans.append(i)
             ans.append(-i)
+        return ans
+
 
 print(Solution().sumZero(2))
