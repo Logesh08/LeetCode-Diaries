@@ -2,10 +2,9 @@ class Solution:
     def sortVowels(self, s: str) -> str:
         buffer = []
         ans = []
-        vowels = ['a','e','i','o','u']
 
         for c in s:
-            if c.lower() in vowels:
+            if c.lower() in "aeiou":
                 ans.append(0)
                 buffer.append(c)
             else:
