@@ -1,10 +1,10 @@
 import re
 from typing import List
+from collections import defaultdict
 
 
 
 # Best solution
-from collections import defaultdict
 class Solution:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
         
