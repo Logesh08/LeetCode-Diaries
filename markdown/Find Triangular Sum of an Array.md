@@ -32,3 +32,15 @@ Since there is only one element in nums, the triangular sum is the value of that
 
 - <code>1 <= nums.length <= 1000</code>
 - <code>0 <= nums[i] <= 9</code>
+
+---
+
+```python
+class Solution:
+    def triangularSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        for i in range(1, n):
+            for i in range(n-1, i-1, -1):
+                nums[i] = (nums[i] + nums[i-1]) % 10
+        return nums[n-1]
+```
