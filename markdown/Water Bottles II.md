@@ -39,5 +39,12 @@ Explanation: The table above shows the number of full water bottles, empty water
 ## Solution
 
 ```python
-
+class Solution:
+    def maxBottlesDrunk(self, numBottles: int, numExchange: int) -> int:
+        ans = numBottles
+        while numBottles >= numExchange:
+            numBottles -= numExchange - 1
+            ans += 1
+            numExchange += 1
+        return ans
 ```
