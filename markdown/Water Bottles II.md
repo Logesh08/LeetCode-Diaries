@@ -34,3 +34,10 @@ Explanation: The table above shows the number of full water bottles, empty water
 - <code>1 <= numBottles <= 100 </code>
 - <code>1 <= numExchange <= 100</code>
 
+---
+
+## Solution
+
+```python
+
+```
