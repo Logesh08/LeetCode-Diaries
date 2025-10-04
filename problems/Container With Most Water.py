@@ -68,3 +68,25 @@ class Solution:
                 ans = max(ans, (j-i) * min(height[i],height[j]) )
 
         return ans
+    
+
+
+
+## Resolved same problem in Oct 4 2025
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        area = left = 0
+        right = len(height) - 1
+        maxHeight = max(height)
+        
+        while left < right:
+            width = right - left
+            area = max(area, min(height[left], height[right]) * width)
+            if height[left] > height[right]:
+                right -= 1
+            else:
+                left += 1
+            if maxHeight * width < area:
+                break       
+        
+        return area
