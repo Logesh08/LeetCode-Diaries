@@ -73,6 +73,7 @@ class Solution:
 
 
 ## Resolved same problem in Oct 4 2025
+# This faster than the previously solved solutions because we are using early exit
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         area = left = 0
