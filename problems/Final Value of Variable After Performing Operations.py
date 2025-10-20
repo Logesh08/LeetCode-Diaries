@@ -5,7 +5,10 @@ from typing import List
 
 class Solution:
     def finalValueAfterOperations(self, operations: List[str]) -> int:
-        X = 0
-        for operation in operations:
-            eval(operation)
-        return X
+        ans = 0
+        for opr in operations:
+            if "-" in opr:
+                ans -= 1
+            else:
+                ans += 1
+        return ans
