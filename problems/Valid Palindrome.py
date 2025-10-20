@@ -51,6 +51,27 @@ class Solution:
             if test[i] != test[n-1-i]:
                 return False
         return True
-    
-
 # Wow I finally beat 99% of the submissions where I stareted from 
+
+
+
+
+
+# A new try ... Not at all recommended!
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left = 0
+        right = len(s) - 1
+        
+        while left < right:
+            if not s[left].isalnum():
+                left += 1
+            elif not s[right].isalnum():
+                right -= 1
+            else:
+                if s[left].lower() != s[right].lower():
+                    return False
+                left += 1
+                right -= 1
+
+        return True
