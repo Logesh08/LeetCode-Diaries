@@ -1,5 +1,3 @@
-# Two Sum II - Input Array Is Sorted
-
 from typing import List
 
 
