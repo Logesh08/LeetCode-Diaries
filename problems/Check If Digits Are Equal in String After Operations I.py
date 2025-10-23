@@ -1,5 +1,3 @@
-# Check If Digits Are Equal in String After Operations I
-
 class Solution:
     def hasSameDigits(self, s: str) -> bool:
         digits = list(map(int,s))
