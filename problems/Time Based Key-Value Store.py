@@ -10,6 +10,42 @@ class TimeMap:
             self.keyStore[key] = [[value, timestamp]]
 
     def get(self, key: str, timestamp: int) -> str:
+        res = ""
+        values = self.keyStore.get(key, [])
+        left = 0
+        right = len(values) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if values[mid][1] <= timestamp:
+                res = values[mid][0]
+                left = mid + 1
+            else:
+                right = mid - 1
+        return res
+
+
+
+
+
+
+
+
+
+
+class TimeMap:
+
+    def __init__(self):
+        self.keyStore = {}
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        if key in self.keyStore:
+            self.keyStore[key].append([value, timestamp])
+        else:
+            self.keyStore[key] = [[value, timestamp]]
+
+    def get(self, key: str, timestamp: int) -> str:
+        if key not in self.keyStore:
+            return ""
         n = len(self.keyStore[key])
         if n == 0 or self.keyStore[key][0][1] > timestamp:
             return ""
