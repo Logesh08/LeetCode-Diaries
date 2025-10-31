@@ -1,5 +1,3 @@
-# The Two Sneaky Numbers of Digitville
-
 from typing import List
 
 
