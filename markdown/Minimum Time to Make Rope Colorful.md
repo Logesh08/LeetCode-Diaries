@@ -48,5 +48,15 @@ There are no longer two consecutive balloons of the same color. Total time = 1 +
 ## Solution
 
 ```python
-
+class Solution:
+    def minCost(self, colors: str, neededTime: List[int]) -> int:
+        res = 0
+        keep = neededTime[0]
+        for i in range(1, len(colors)):
+            if colors[i]==colors[i-1]:
+                res += min(keep, neededTime[i])
+                keep = max(keep, neededTime[i])
+            else:
+                keep = neededTime[i]
+        return res
 ```
