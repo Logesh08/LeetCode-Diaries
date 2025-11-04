@@ -33,4 +33,14 @@ class Solution:
     
 
 
-# 
+# Recursive version
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def doReverse(cur: ListNode, prev: ListNode):
+            if cur:
+                next = cur.next
+                cur.next = prev
+                doReverse(next, cur)
+            else:
+                return prev # It's head, when we come here, we are past the tail
+        return doReverse(head, None)
