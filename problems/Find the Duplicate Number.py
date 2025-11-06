@@ -26,7 +26,7 @@ class Solution:
                 # In this case for ex nums[i] = 2, nums[j] = 2, since both point here
                 # This is where the cycle begins and the answer is also the same!
 
-        return nums[slow]
+        return slow
 
 
 
