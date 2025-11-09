@@ -1,6 +1,6 @@
 from typing import List
 
-
+# 3mins 53 secs
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         row = [set() for _ in range(9)]
