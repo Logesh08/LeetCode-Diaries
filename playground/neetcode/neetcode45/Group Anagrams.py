@@ -16,7 +16,7 @@ class Solution:
 
 
 
-
+# 1min 11 secs
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         hashMap = defaultdict(list)
