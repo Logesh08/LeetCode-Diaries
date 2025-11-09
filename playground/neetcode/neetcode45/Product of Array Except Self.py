@@ -21,7 +21,7 @@ class Solution:
     
 
 
-
+# 2min 49 secs
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         n = len(nums)
