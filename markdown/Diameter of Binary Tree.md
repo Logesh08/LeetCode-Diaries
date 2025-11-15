@@ -1,0 +1,50 @@
+# [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/description/)
+
+Given the <code>root</code> of a binary tree, return the length of the **diameter**  of the tree.
+
+The **diameter**  of a binary tree is the **length**  of the longest path between any two nodes in a tree. This path may or may not pass through the <code>root</code>.
+
+The **length**  of a path between two nodes is represented by the number of edges between them.
+
+**Example 1:** 
+<img alt="" src="https://assets.leetcode.com/uploads/2021/03/06/diamtree.jpg" style="width: 292px; height: 302px;">
+
+```
+Input: root = [1,2,3,4,5]
+Output: 3
+Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
+```
+
+**Example 2:** 
+
+```
+Input: root = [1,2]
+Output: 1
+```
+
+**Constraints:** 
+
+- The number of nodes in the tree is in the range <code>[1, 10^4]</code>.
+- <code>-100 <= Node.val <= 100</code>
+
+---
+
+## Solution
+
+```python
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        res = 0
+
+        def dfs(node: Optional[TreeNode]):
+            if not node:
+                return 0
+            nonlocal res
+            left = dfs(node.left)
+            right = dfs(node.right)
+            res = max(res, left + right)
+            return 1 + max(left, right)
+
+        dfs(root)
+        return res
+```
