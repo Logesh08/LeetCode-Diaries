@@ -12,8 +12,11 @@ class Solution:
         if not root and not subRoot:
             return True
         
+        elif self.isSameTree(root, subRoot):
+            return True
+
         elif root and subRoot:
-            return self.isSubtree(root.left)
+            return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
         else:
             return False
         
