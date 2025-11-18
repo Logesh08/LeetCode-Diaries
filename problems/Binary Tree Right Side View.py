@@ -28,3 +28,25 @@ class Solution:
                     queue.append(node.right)
 
         return res
+    
+
+
+# DFS
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        if not root:
+            return res
+        
+        def dfs(node: Optional[TreeNode], depth):
+            if depth == len(res):
+                res.append(0)
+
+            res[depth] = node.val
+            if node.left:
+                dfs(node.left, depth + 1)
+            if node.right:
+                dfs(node.right, depth + 1)
+        
+        dfs(root, 0)
+        return res
