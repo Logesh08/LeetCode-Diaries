@@ -8,6 +8,8 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
+# Using BFS
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         queue = deque()
@@ -28,3 +30,29 @@ class Solution:
                 res.append(l)
 
         return res
+    
+
+
+# Space complexity upgrade
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        queue = deque()
+        queue.append(root)
+        res = []
+
+        while queue:
+            l = []
+            for _ in range(len(queue)):
+                node: TreeNode = queue.popleft()
+                if node:
+                    queue.append(node.left)
+                    queue.append(node.right)
+                    l.append(node.val)
+            if l:
+                res.append(l)
+
+        return res
+    
+
+
+# Using DFS
