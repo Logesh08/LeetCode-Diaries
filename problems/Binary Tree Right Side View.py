@@ -50,3 +50,23 @@ class Solution:
         
         dfs(root, 0)
         return res
+    
+
+# Smart ass dfs
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        if not root:
+            return res
+        
+        def dfs(node: Optional[TreeNode], depth):
+            if depth == len(res):
+                res.append(node.val)
+
+            if node.right:                  # By visiting right side first, we can garantee that we can
+                dfs(node.right, depth + 1)  # append the first element itself!
+            if node.left:
+                dfs(node.left, depth + 1)
+        
+        dfs(root, 0)
+        return res
