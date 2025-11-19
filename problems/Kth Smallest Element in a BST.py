@@ -47,3 +47,25 @@ class Solution:
 
         dfs(root)
         return arr[k - 1]
+    
+
+
+
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        stack = []
+        cur = root
+
+        while stack or root:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+
+            cur = stack.pop()  # Smallest value on first pop!
+
+            k -= 1
+            if k == 0:
+                return cur.val
+            
+            cur = cur.right
+
