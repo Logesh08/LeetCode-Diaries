@@ -28,3 +28,27 @@ Explanation: The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 
 
 - The number of nodes in the tree is in the range <code>[1, 3 * 10^4]</code>.
 - <code>-1000 <= Node.val <= 1000</code>
+
+---
+
+## Solution
+
+```python
+class Solution:
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        res = [root.val]
+
+        def dfs(node: Optional[TreeNode]):
+            if not node:
+                return 0
+            
+            leftMax = max(0, dfs(node.left))
+            rightMax = max(0, dfs(node.right))
+
+            res[0] = max(res[0], node.val + leftMax + rightMax)
+
+            return node.val + max(leftMax, rightMax)
+        
+        dfs(root)
+        return res[0]
+```
