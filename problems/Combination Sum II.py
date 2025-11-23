@@ -24,3 +24,30 @@ class Solution:
 
         dfs(0, 0)
         return res
+    
+
+
+
+class Solution:
+    def combinationSum2(self, nums: List[int], target: int) -> List[List[int]]:
+        res = []
+
+        nums.sort()
+        path: List[int] = []
+        def dfs(i, total):
+            if total == target:
+                res.append(path.copy())
+                return
+            
+            for idx in range(i, len(nums)):
+                if idx != i and nums[idx] == nums[idx - 1]:
+                    continue
+                if total + nums[idx] > target:
+                    break
+
+                path.append(nums[idx])
+                dfs(idx + 1, total + nums[idx])
+                path.pop()
+
+        dfs(0, 0)
+        return res
