@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Set
 
 
 class Solution:
@@ -6,17 +6,20 @@ class Solution:
         res = []
         n = len(nums)
 
+        visited = [False] * n
         path = []
-        def dfs(i):
+        def dfs():
             if len(path) == n:
                 res.append(path.copy())
                 return
 
             for idx in range(n):
-                if i != idx:
+                if not visited[idx]:
                     path.append(nums[idx])
-                    dfs(idx)
+                    visited[idx] = True
+                    dfs()
                     path.pop()
+                    visited[idx] = False
 
-        dfs(0)
+        dfs()
         return res
