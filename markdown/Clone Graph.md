@@ -64,5 +64,20 @@ Explanation: This an empty graph, it does not have any nodes.
 ## Solution
 
 ```python
+class Solution:
+    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        hashMap = {}
 
+        def dfs(node: Node):
+            if node in hashMap:
+                return hashMap[node]
+            
+            newNode = Node(node.val)
+            hashMap[node] = newNode
+            for nei in node.neighbors:
+                newNode.neighbors.append(dfs(nei))
+
+            return newNode
+
+        return dfs(node) if node else None
 ```
