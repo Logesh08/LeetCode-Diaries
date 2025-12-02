@@ -27,7 +27,7 @@ class Solution:
         for pts in hashMap.values():
             if pts > 1:
                 segments = pts * (pts - 1) // 2
-                result = segments * totalSegs
+                result += segments * totalSegs
                 totalSegs += segments
 
         return result % MODULO
