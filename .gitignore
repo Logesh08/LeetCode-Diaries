@@ -3,3 +3,4 @@ env/
 commit.sh
 createFiles.sh
 temp/
+.history
