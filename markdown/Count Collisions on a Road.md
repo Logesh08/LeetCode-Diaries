@@ -33,9 +33,26 @@ Thus, the total number of collisions that will happen on the road is 5.
 Input: directions = "LLRR"
 Output: 0
 Explanation:
-No cars will collide with each other. Thus, the total number of collisions that will happen on the road is 0.```
+No cars will collide with each other. Thus, the total number of collisions that will happen on the road is 0.
+```
 
 **Constraints:** 
 
 - <code>1 <= directions.length <= 10^5</code>
 - <code>directions[i]</code> is either <code>'L'</code>, <code>'R'</code>, or <code>'S'</code>.
+
+---
+
+## Solution
+
+```python
+class Solution:
+    def countCollisions(self, directions: str) -> int:
+        """
+        If we have an L, we just check if there is an R or S to its left.
+        If we have an R, we check if there is an L or S to its right
+        If we have an S, we continue as we already covered any collisions with it in other two cases
+        """
+        res_str = directions.lstrip('L').rstrip('R')
+        return len(res_str) - res_str.count('S')
+```
