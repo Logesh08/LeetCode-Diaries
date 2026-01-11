@@ -32,3 +32,22 @@ Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 - <code>-10^4 <= nums[i] <= 10^4</code>
 
 **Follow up:**  If you have figured out the <code>O(n)</code> solution, try coding another solution using the **divide and conquer**  approach, which is more subtle.
+
+---
+
+## Solution
+
+```python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        res = float('-inf')
+        sum = 0
+
+        for num in nums:
+            sum += num
+            res = max(res, sum)
+            if sum < 0:
+                sum = 0
+
+        return res
+```
