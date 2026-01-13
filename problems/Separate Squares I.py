@@ -10,11 +10,11 @@ class Solution:
         for x, y, l in squares:
             totalArea += l * l
             minY = min(minY, y)
-            maxY = max(maxY, y)
+            maxY = max(maxY, y + l)
 
         target = totalArea / 2.0
 
-        def findAreaAbove(h: int) -> float:
+        def findAreaAbove(h: float) -> float:
             area = 0.0
             for x, y, l in squares: 
                 if y > h:
@@ -29,18 +29,15 @@ class Solution:
             return area
         
         low, high = minY, maxY
-        tolernce = 1e-5
+        tolerance = 1e-5
 
-
-        while high - low > tolernce:
+        while high - low > tolerance:
             mid = (low + high) / 2.0
             areaAbove = findAreaAbove(mid)
-            if areaAbove == target:
-                break
-            elif areaAbove < target:
-                mid = low
+            if areaAbove > target:
+                low = mid
             else:
-                mid = high
+                high = mid
 
         return (low + high) / 2.0
 
