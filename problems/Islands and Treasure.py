@@ -1,7 +1,7 @@
 from collections import deque
 from typing import List
 
-#   
+# 7mins
 class Solution:
     def islandsAndTreasure(self, grid: List[List[int]]) -> None:
         queue = deque()
